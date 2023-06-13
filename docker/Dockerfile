@@ -1,7 +1,8 @@
 FROM nvcr.io/nvidia/pytorch:23.05-py3
 
 # install detectron2
-ADD docker/detectron2 /root/detectron2
+# ADD docker/detectron2 /root/detectron2
+RUN python -m pip install 'git+https://github.com/facebookresearch/detectron2.git' /root/detectron2
 RUN python -m pip install -e /root/detectron2
 
 # install spconv
