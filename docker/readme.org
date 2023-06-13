@@ -1,0 +1,19 @@
+* issue
+** spconv build error in dockerfile
+In the last step of the official, build is finished when spconv is imported from python firstly.
+But this step error when add the following in dockerfile:
+#+begin_src 
+  RUN python -m spconv
+#+end_src
+
+The reason is that nvidia-smi is needed in spconv buiding, while nvidia-smi is imported after container started through import
+nvidia driver.
+*** the temporal method is: finishing the spconv building in the container, then commit the container as new image.
+* usage
+** see [[*the temporal method is: finishing the spconv building in the container, then commit the container as new image.][using temporal method]]
+** start container
+#+begin_src bash
+  docker compose run --rm querydet /bin/bash
+#+end_src
+
+

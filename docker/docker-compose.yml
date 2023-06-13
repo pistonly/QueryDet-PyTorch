@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  querydet:
+    image: querydet:latest
+    container_name: querydet
+    environment:
+      - DETECTRON2_DATASETS=/home/liuyang/datasets/
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /mnt:/mnt
+      - /home:/home
+    ipc: host
+    runtime: nvidia
+    ulimits:
+      memlock: -1
+      stack: 67108864

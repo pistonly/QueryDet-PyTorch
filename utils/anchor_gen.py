@@ -14,7 +14,7 @@ class AnchorGeneratorWithCenter(DefaultAnchorGenerator):
         anchors = []
         centers = []
         for size, stride, base_anchors in zip(grid_sizes, self.strides, self.cell_anchors):
-            shift_x, shift_y = _create_grid_offsets(size, stride, self.offset, base_anchors.device)
+            shift_x, shift_y = _create_grid_offsets(size, stride, self.offset, base_anchors)
             shifts = torch.stack((shift_x, shift_y, shift_x, shift_y), dim=1)
             center = torch.stack((shift_x, shift_y), dim=1)
 
